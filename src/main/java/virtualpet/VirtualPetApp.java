@@ -61,7 +61,8 @@ public class VirtualPetApp {
 			}
 
 			startPet.countTick();
-			System.out.println("new day good luck");
+			System.out.println("");
+			System.out.println(name + " GROWS STRONG! DONT LET HIS STATS MAX!");
 
 		} while (!(move.equals("6")));
 
