@@ -1,7 +1,11 @@
 package virtualpet;
+import java.util.Random;
 
 public class VirtualPet {
 
+	Random rand = new Random();
+	
+	
 	private int tick;
 
 	private int hunger;
@@ -41,32 +45,38 @@ public class VirtualPet {
 	}
 
 	public void feeding() {
-		int eating = 5;
+		int eating = rand.nextInt(10) +1;
 		hunger -= eating;
 		thirst += eating;
 		
 	}
 
 	public void quenching() {
-		int drink = 5;
+		int drink = rand.nextInt(10) +1;
 		thirst -= drink;
 		hunger += drink;
 	}
 
 	public void activity() {
-		int fun = 5;
+		int fun = rand.nextInt(10) +1;
 		boredom -= fun;
 		tiredness +=fun;
 	}
 
 	public void rest() {
-		int nap = 5;
+		int nap = rand.nextInt(10) +1;
 		tiredness -= nap;
 		boredom += nap;
 	}
 	
 	public void countTick() {
 		
-		
-	}
-}
+			hunger += rand.nextInt(2) +1;
+			thirst += rand.nextInt(2) +1;
+			tiredness += rand.nextInt(2) +1;
+			boredom += rand.nextInt(2)+1;
+		}
+	
+}	
+
+
