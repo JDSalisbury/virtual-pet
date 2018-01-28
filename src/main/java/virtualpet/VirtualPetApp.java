@@ -13,6 +13,7 @@ public class VirtualPetApp {
 		System.out.println("Please give your virtual pet a name: ");
 		String name = input.nextLine();
 		String move;
+		int turn = 0;
 
 		do {
 			System.out.println(name + " The Virtual Pet!");
@@ -32,42 +33,43 @@ public class VirtualPetApp {
 			System.out.println("6. Quit and never see " + name + " again.");
 
 			move = input.nextLine();
-
+			turn++;
 			if (startPet.getHunger() >= 50 || startPet.getThirst() >= 50 || startPet.getBoredom() >= 50
 					|| startPet.getTiredness() >= 50) {
-				System.out.println("Little " + name + " didn't make it... Good luck with the next one.");
+				System.out.println(
+						turn + " Days... Poor little " + name + ". I remember my First Virtual pet...");
 				System.exit(0);
 
 			}
 
 			if (move.equals("1") && !(startPet.getHunger() <= 0)) {
 				startPet.feeding();
-
+				System.out.println(turn + " DAYS " +name + " GROWS STRONG! DONT LET HIS STATS MAX!");
 			}
 
 			if (move.equals("2") && !(startPet.getThirst() <= 0)) {
 				startPet.quenching();
-
+				System.out.println(turn + " DAYS " +name + " GROWS STRONG! DONT LET HIS STATS MAX!");
 			}
 
 			if (move.equals("3") && !(startPet.getBoredom() <= 0)) {
 				startPet.activity();
-
+				System.out.println(turn + " DAYS " +name + " GROWS STRONG! DONT LET HIS STATS MAX!");
 			}
 
 			if (move.equals("4") && !(startPet.getTiredness() <= 0)) {
 				startPet.rest();
-
+				System.out.println(turn + " DAYS " +name + " GROWS STRONG! DONT LET HIS STATS MAX!");
 			}
-
+			if(turn % 3 == 0) {
 			startPet.countTick();
+			}
 			System.out.println("");
-			System.out.println(name + " GROWS STRONG! DONT LET HIS STATS MAX!");
+			
 
 		} while (!(move.equals("6")));
 
-		System.out.println(
-				"Thanks for playing with " + name + " and remeber all the good memories you got to share together...");
+		System.out.println("Only " + turn + " days old, Poor little " + name + ". So young...");
 
 		input.close();
 	}
