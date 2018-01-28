@@ -1,12 +1,10 @@
 package virtualpet;
+
 import java.util.Random;
 
 public class VirtualPet {
 
 	Random rand = new Random();
-	
-	
-	private int tick;
 
 	private int hunger;
 
@@ -40,43 +38,53 @@ public class VirtualPet {
 		return tiredness;
 	}
 
-	public int getTick() {
-		return tick;
-	}
-
 	public void feeding() {
-		int eating = rand.nextInt(10) +1;
+		int eating = rand.nextInt(10) + 1;
 		hunger -= eating;
 		thirst += eating;
-		
+		boredom += eating;
+
 	}
 
 	public void quenching() {
-		int drink = rand.nextInt(10) +1;
+		int drink = rand.nextInt(10) + 1;
 		thirst -= drink;
 		hunger += drink;
+		tiredness += drink;
 	}
 
 	public void activity() {
-		int fun = rand.nextInt(10) +1;
+		int fun = rand.nextInt(10) + 1;
 		boredom -= fun;
-		tiredness +=fun;
+		tiredness += fun;
+		thirst += fun;
 	}
 
 	public void rest() {
-		int nap = rand.nextInt(10) +1;
+		int nap = rand.nextInt(10) + 1;
 		tiredness -= nap;
 		boredom += nap;
+		hunger += nap;
 	}
-	
-	public void countTick() {
-		
-			hunger += rand.nextInt(2) +1;
-			thirst += rand.nextInt(2) +1;
-			tiredness += rand.nextInt(2) +1;
-			boredom += rand.nextInt(2)+1;
+
+	public void tick() {
+
+		if (hunger > thirst) {
+			hunger -= 5;
+		} else if (thirst > hunger) {
+			thirst -= 5;
 		}
-	
-}	
+		if (tiredness > boredom) {
+			tiredness -= 5;
+		} else if (boredom > tiredness) {
+			boredom -= 5;
+		}
 
+		hunger += rand.nextInt(2) + 1;
+		thirst += rand.nextInt(2) + 1;
+		tiredness += rand.nextInt(2) + 1;
+		boredom += rand.nextInt(2) + 1;
 
+	}
+
+}
